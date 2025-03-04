@@ -1,0 +1,66 @@
+.admin-dashboard{
+    padding:20px;
+    background: color #f4f4f4;
+}
+h1{
+    text-align: center;
+    color:black;
+}
+.stats{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.stat-card{
+    background-color: white;
+    padding:20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+}
+.stat-card h2{
+    margin: 0;
+    color:black;
+}
+.add-event-button, .add-notification-button {
+    margin: 10px 0;
+    padding: 10px 15px;
+    background-color: #333333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.add-event-button:hover, .add-notification-button:hover{
+    background-color: rgb(47, 47, 4);
+}
+.event-table, .user-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.event-table th, .user-table th, .event-table td, .user-table td{
+    border: 1px solid #100101;
+    padding: 10px;
+    text-align: left;
+}
+.event-table th, .user-table th{
+    background-color: #D9D9D9;
+    color: black;
+}
+.event-table td, .user-table td{
+    background-color: white;
+    color:black;
+
+}
+@media (max-width: 768px) {
+.stats {
+      flex-direction: column; /* Stack cards vertically on small screens */
+}
+  
+.stat-card {
+      margin: 10px 0; /* Add margin for vertical spacing */
+}
+}
