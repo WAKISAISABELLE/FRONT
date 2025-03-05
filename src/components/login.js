@@ -16,7 +16,7 @@ export default function Login(){
         try{
             await new Promise((resolve) => setTimeout(resolve, 1000))
             if (email.includes("admin")){
-                router.push("/Dashboard/admin")
+                 .push("/Dashboard/admin")
             } else if (email.includes("president")){
                 router.push("/Dashboard/president")
             }else{
