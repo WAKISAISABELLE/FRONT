@@ -9,7 +9,7 @@ export default function admin(){
                    <h1> Admin Dashboard</h1>
                    <p> Manage your chapter activities</p>
                 </div>
-                <button class = 'button'> + Add new</button>
+                <button class = 'button'> +Add new</button>
             </div>
             <div class="overview-cards">
                 <div class="card">
@@ -68,7 +68,7 @@ export default function admin(){
             <div class ="section">
                 <div class ="section-header">
                     <h2>Member management</h2>
-                    <button class ="button">+Add button</button>
+                    <button class ="button">+Add new</button>
                 </div>
                 <div class ="members-list">
                     <div class ="member-item">
@@ -77,15 +77,15 @@ export default function admin(){
                             <p>isabellewakisa992@gmail.com</p>
                             <span class="member-role">Member</span>
                         </div>
-                        <button class ="button button=delete">Remove</button>
+                        <button class ="button button-delete">Remove</button>
                         <div>
                             <div class ="member-item">
                                 <div>
-                                    <h3>Hnery</h3>
+                                    <h3>Henry</h3>
                                     <p>henry@gmsil.com</p>
                                     <span class="member-role">Leader</span>
                                 </div>
-                                <button class ="button button=delete">Remove</button>
+                                <button class ="button button-delete">Remove</button>
                             </div>
                         </div>
                     </div>
