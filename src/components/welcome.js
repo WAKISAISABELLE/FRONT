@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 
 import './welcome.css';
@@ -42,7 +41,7 @@ export default function Welcome(){
     },
     {
       id: 6,
-      name: "Graphics and Animations",
+      name: "Graphics and ",
       description: "Promoting and contributing to open source software.",
       members: 70,
       events: 7
@@ -120,6 +119,3 @@ export default function Welcome(){
     </div>
   );
 }
-=======
-import REACT from 'react';
->>>>>>> 9432f9a4804c2ce564b4778cf1d7ce6869b7df63
