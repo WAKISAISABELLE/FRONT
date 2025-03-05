@@ -22,13 +22,7 @@ export default function Login(){
             }else{
                 router.push("/Dashboard/student")
             }
-        }catch (err){
-         setError('Invalid email or password. Please try again')
-        }finally
-         
-        }
-    };
-
+        }cat
     return(
         <div className = 'Login-container'>
             <h2> Login</h2>
