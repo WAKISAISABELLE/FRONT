@@ -2,16 +2,16 @@
 //  import Welcome from './components/welcome';
  import './App.css';
 // import Admin from './Dashboard/admin';
-
-import Student from './Dashboard/student.js';
+import President from './Dashboard/president';
+// import Student from './Dashboard/student';
 
 function App() {
   return (
     <div>
-        {/* <Welcome/> */}
+        {/* <Student/> */}
 
-        <Student/> 
-        {/* <Admin/> */}
+        <President/>
+        {/* <Admin/>  */}
 
     </div>
   );
