@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import './admin.css';
+import { getAdminDashboardData } from './apis/adminAPIS';
 
 export default function Admin() {
     const [dashboardData, setDashboardData] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_ADMIN_API_URL}/api/admin/dashboard`, {
-            headers: { Authorization: 'Basic ' + btoa('admin:admin123') },
-        })
-            .then((res) => {
-                setDashboardData(res.data);
-            })
-            .catch((error) => {
+        const fetchData = async () => {
+            try {
+                const data = await getAdminDashboardData();
+                setDashboardData(data);
+            } catch (error) {
                 console.error('Error fetching data:', error);
                 navigate('/login');
-            });
-    }, [navigate]);
+            }
+        };
 
+        fetchData();
+    }, [navigate]);
+        
     if (!dashboardData) return <div>Loading...</div>;
     const { stats, events, users } = dashboardData;
 
