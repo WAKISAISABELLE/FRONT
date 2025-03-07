@@ -8,7 +8,7 @@ export default function Student() {
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(`${process.env.REACT_STUDENT_API_URL}/api/student/dashboard`, {
-      headers: {Authorization: 'Basic' + btoa('student:password')},
+      headers: {Authorization: 'Basic ' + btoa('student:password')},
     })
       .then((res) => {
         setDashboardData(res.data);

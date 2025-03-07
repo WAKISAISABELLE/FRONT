@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import './admin.css';
-import { getAdminDashboardData } from './apis/adminAPIS';
+import { getAdminDashboardData } from '../apis/adminAPIS';
 
 export default function Admin() {
     const [dashboardData, setDashboardData] = useState(null);
@@ -11,7 +11,9 @@ export default function Admin() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log('fetching admin dashboard data..')
                 const data = await getAdminDashboardData();
+                console.log('data:', data);
                 setDashboardData(data);
             } catch (error) {
                 console.error('Error fetching data:', error);

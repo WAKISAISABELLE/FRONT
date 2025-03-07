@@ -5,7 +5,7 @@ export const getAdminDashboardData =async () => {
     try {
         const res = await apiClient.get('/api/admin/dashboard', {
             headers:{
-                Authorization: 'Basic' + btoa('admin:admin'),
+                Authorization: 'Basic '  + btoa('admin:1101'),
             },
         });
         return res.data;
