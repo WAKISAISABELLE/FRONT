@@ -1,22 +1,28 @@
-import React from "react";
+
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import './student.css';
-export default function Student(){
-const upcomingEvents = [
-    { id: 1, title: "Algorithm Competition", date: "2023-06-15", time: "2:00 PM", location: "CS Building Room 101" },
-    { id: 2, title: "Web Development Workshop", date: "2023-06-20", time: "3:30 PM", location: "Engineering Hall" },
-    { id: 3, title: "Cybersecurity Seminar", date: "2023-06-25", time: "1:00 PM", location: "Online" }
-];
-  
-const myChapters = [
-    { id: 1, name: "ACM Student Chapter", role: "Member", eventCount: 5 },
-    { id: 2, name: "Cybersecurity Club", role: "Secretary", eventCount: 3 }
-];
-  
-const notifications = [
-    { id: 1, message: "New event added to ACM Student Chapter", time: "2 hours ago" },
-    { id: 2, message: "Your event registration was confirmed", time: "1 day ago" },
-    { id: 3, message: "New resource available in Cybersecurity Club", time: "2 days ago" }
-];
+export default function Student() {
+  const [dashboardData, setDashboardData] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetch("https://localhost:3001/api/student/dashboard", {
+      headers: {Authorization: 'Basic' + btoa('student:password')},
+    })
+      .then((res) => {
+        if(!res.ok){
+          throw new Error('Not authorized');
+        }
+        return res.json();
+      })
+        .then((data) => setDashboardData(data))
+        .catch(() => navigate('/login'));
+      }, [navigate]);
+      if(!dashboardData){
+        return <div>Loading...</div>;
+      }
+      const {myChapters, upcomingEvents, notifications} = dashboardData;
+
 return (
        
           <div className = "student-dashboard">
@@ -196,8 +202,8 @@ return (
                      </div>
             </div>
           </div>
-    )
-    }
+    );
+}
 
 // Dont render arrays directly, so i corrected the error with .length
                 

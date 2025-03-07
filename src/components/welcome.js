@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import './welcome.css';
 
@@ -9,42 +10,48 @@ export default function Welcome(){
       name: "Robotics and AI Chapter",
       description: "Association for Computing Machinery student chapter focused on advancing computing as a science and profession.",
       members: 120,
-      events: 15
+      events: 15,
+      learnMoreUrl:'https://www.robogals.org'
     },
     {
       id: 2,
       name: "Data Science",
       description: "Institute of Electrical and Electronics Engineers Computer Society chapter.",
       members: 95,
-      events: 12
+      events: 12,
+      learnMoreUrl:'https://www.kdnuggets.com'
     },
     {
       id: 3,
       name: "Mechatronics Engineering",
       description: "Supporting and promoting women in computer science and engineering.",
       members: 75,
-      events: 8
+      events: 8,
+      learnMoreUrl:'https://www.womenintech.com'
     },
     {
       id: 4,
       name: "Augemented Reality",
       description: "Focused on artificial intelligence research and applications.",
       members: 60,
-      events: 10
+      events: 10,
+      learnMoreUrl:'https://www.augmentedreality.com'
     },
     {
       id: 5,
       name: "Cybersecurity Club",
       description: "Dedicated to cybersecurity education and practice.",
       members: 85,
-      events: 9
+      events: 9,
+      learnMoreUrl:'https://www.cisecurity.org/cybersecurity-101'
     },
     {
       id: 6,
       name: "Graphics and Animations ",
       description: "Promoting and contributing to open source software.",
       members: 70,
-      events: 7
+      events: 7,
+      learnMoreUrl:'https://www.opensource.org'
     }
   ];
   return (
@@ -59,9 +66,9 @@ export default function Welcome(){
           </ul>
         </nav>
         <div className='auth-buttons'>
-          {/* <link to='/Login' className='button button-login'>Log in</link> */}
-          {/* <Link to='/signup' className='button button-signup'>Sign up</Link> */}
-        
+           <link to='/Login' className='button button-login'>Log in</link> 
+           <Link to='/signup' className='button button-signup'>Sign up</Link> 
+        {/* used link instead of static */}
         </div>
       </header>
 
@@ -109,7 +116,7 @@ export default function Welcome(){
                 <span>{chapter.members} Members</span>
                 <span>{chapter.events} Events</span>
               </div>
-              <a href={chapter.url} className="chapter-button">Learn More</a>
+              <a href={chapter.url} className="chapter-button" target="_blank" rel="noopener noreferrer">Learn More</a>
             </div>
           ))}
         </div>
