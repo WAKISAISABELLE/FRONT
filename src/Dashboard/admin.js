@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import './admin.css';
 
 export default function Admin() {
@@ -7,15 +8,16 @@ export default function Admin() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_ADMIN_API_URL}/api/admin/dashboard`, {
+        axios.get(`${process.env.REACT_ADMIN_API_URL}/api/admin/dashboard`, {
             headers: { Authorization: 'Basic ' + btoa('admin:admin123') },
         })
             .then((res) => {
-                if (!res.ok) throw Error('unauthorized');
-                return res.json();
+                setDashboardData(res.data);
             })
-            .then((data) => setDashboardData(data))
-            .catch((error) => navigate('/login'));
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+                navigate('/login');
+            });
     }, [navigate]);
 
     if (!dashboardData) return <div>Loading...</div>;

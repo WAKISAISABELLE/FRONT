@@ -2,21 +2,21 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import './student.css';
+import axios from 'axios';
 export default function Student() {
   const [dashboardData, setDashboardData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`${process.env.REACT_STUDENT_API_URL}/api/student/dashboard`, {
+    axios.get(`${process.env.REACT_STUDENT_API_URL}/api/student/dashboard`, {
       headers: {Authorization: 'Basic' + btoa('student:password')},
     })
       .then((res) => {
-        if(!res.ok){
-          throw new Error('Not authorized');
-        }
-        return res.json();
-      })
-        .then((data) => setDashboardData(data))
-        .catch(() => navigate('/login'));
+        setDashboardData(res.data);
+        })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        navigate('/login');
+      });
       }, [navigate]);
       if(!dashboardData){
         return <div>Loading...</div>;
