@@ -6,7 +6,7 @@ export default function Student() {
   const [dashboardData, setDashboardData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://localhost:3001/api/student/dashboard", {
+    fetch(`${process.env.REACT_STUDENT_API_URL}/api/student/dashboard`, {
       headers: {Authorization: 'Basic' + btoa('student:password')},
     })
       .then((res) => {

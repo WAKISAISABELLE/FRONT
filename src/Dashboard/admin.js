@@ -7,7 +7,7 @@ export default function Admin() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3002/api/admin/dashboard', {
+        fetch(`${process.env.REACT_ADMIN_API_URL}/api/admin/dashboard`, {
             headers: { Authorization: 'Basic ' + btoa('admin:admin123') },
         })
             .then((res) => {
