@@ -41,7 +41,7 @@ export default function Welcome(){
     },
     {
       id: 6,
-      name: "Graphics and ",
+      name: "Graphics and Animations ",
       description: "Promoting and contributing to open source software.",
       members: 70,
       events: 7
@@ -109,7 +109,7 @@ export default function Welcome(){
                 <span>{chapter.members} Members</span>
                 <span>{chapter.events} Events</span>
               </div>
-              <button className="chapter-button">Learn More</button>
+              <a href={chapter.url} className="chapter-button">Learn More</a>
             </div>
           ))}
         </div>
