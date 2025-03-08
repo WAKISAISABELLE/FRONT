@@ -1,15 +1,15 @@
 .dashboard-container {
   display: flex;
   height: 100vh;
-  background-color: #0f0d0d;
+  /* background-color: black; */
 }
 
 .sidebar {
-  width: 200px;
-  background-color: white;
+  width: 100px;
+  background-color: black;
   border: 2px solid #333;
   padding: 20px;
-  border-top-right-radius: 30px;
+  border-top-right-radius: 10px;
   height: 100%;
   position: fixed;
   left: 0;
@@ -44,32 +44,33 @@
   text-decoration: none;
   color: #333;
   font-size: 20px;
-  font-weight: 600;
 }
 
 .sidebar ul li a:hover {
-  color: #007bff;
+  color:aliceblue;
+  background-color: black;
 }
 
 .content {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
-  margin-left: 220px; /* Adjust for sidebar width */
+  margin-left: 220px;
+ /* Adjust for sidebar width */
 }
 
 .dashboard {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  background-color: #0f0d0d;
+  gap: 30px;
+  background-color:black; 
   padding: 20px;
   border-radius: 20px;
 }
 
 .card {
   background-color: white;
-  border: 1px solid #0f0d0d;
+  /* border: 1px solid #0f0d0d; */
   border-radius: 30px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -78,7 +79,7 @@
   min-height: 200px;
 }
 h2{
-  color: #333;
+  color: black;
   margin-left: 20px;
   text-decoration: none;
 }
@@ -86,30 +87,64 @@ h2{
   margin-top: 0;
   color: black;
   text-decoration: none;
+  padding: 0 0 0 10px;
 }
 
-.semi-card {
-  background-color: #f9f9f9;
-  border: 1px solid #131212;
+
+
+.semi-card-container {
+  /* border: 1px solid #131212; */
   border-radius: 10px;
-  width: 300px;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: white;
+  cursor: pointer;
 }
-
+.sem-card-container {
+  margin: 20px;
+  /* border: 1px solid #131212; */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: black;
+  cursor: pointer;
+}
+.semi-card {
+  background-color: turquoise;
+  /* border: 1px solid #131212; */
+  transition: .2s;
+  flex: 1 1 calc(33.333% - 20px); /* 3 columns with gap */
+  box-sizing: border-box;
+}
+.sem-card {
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #131212;
+  transition: .2s;
+  flex: 1 1 calc(33.333% - 20px); /* 3 columns with gap */
+  box-sizing: border-box;
+}
 .box {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 20px;
 }
-
+#chapter1 semi-card-container{
+  background-color:black;
+}
 .box > div {
-  background-color: #e0e0e0;
+  background-color: #181616;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100px;
+  border-radius: 10px;
+  width: 200px;
   height: 100px;
-  padding: 30px;
+  padding: 20px;
   margin-left: 30px;
   flex: 1 1 calc(25% - 20px); /* Adjust for gap */
   text-align: center;
@@ -152,6 +187,10 @@ h2{
     min-width: 100%;
   }
 
+  .semi-card {
+    flex: 1 1 calc(50% - 20px); /* 2 columns with gap */
+  }
+
   .box {
     gap: 20px;
   }
@@ -173,6 +212,10 @@ h2{
 
   .card {
     padding: 10px;
+  }
+
+  .semi-card {
+    flex: 1 1 100%; /* 1 column */
   }
 
   .box {

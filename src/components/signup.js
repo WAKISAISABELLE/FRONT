@@ -65,7 +65,7 @@ export default function SignupPage() {
           />
           <label className="form-check-label" htmlFor="remember">Remember me</label>
         </div>
-        <p>By creating an account you agree to our <a href="#" style={{ color: 'dodgerblue' }}>Terms & Privacy</a>.</p>
+        <p>By creating an account you agree to our <button type="button" className="btn btn-link p-0" style={{ color: 'dodgerblue' }}>Terms & Privacy</button>.</p>
         <div className="d-flex justify-content-between">
           <button type="button" className="btn btn-secondary">Cancel</button>
           <button type="submit" className="btn btn-primary">Sign Up</button>
