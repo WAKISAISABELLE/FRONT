@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import './admin.css';
-import { getAdminDashboardData } from '../apis/adminAPIS';
+import { getAdminDashboard} from '../apis/adminAPIS';
 
 export default function Admin() {
     const [dashboardData, setDashboardData] = useState(null);
@@ -12,7 +12,7 @@ export default function Admin() {
         const fetchData = async () => {
             try {
                 console.log('fetching admin dashboard data..')
-                const data = await getAdminDashboardData();
+                const data = await getAdminDashboard();
                 console.log('data:', data);
                 setDashboardData(data);
             } catch (error) {
@@ -80,8 +80,8 @@ export default function Admin() {
                         {users.map((user) => (
                             <div className="user-item" key={user.id}>
                                 <div className="user-details">
-                                    <h3>{user.name}</h3>
-                                    <p>Role: {user.role}. Chapter: {user.chapter}</p>
+                                    <h3>{user.username}</h3>
+                                    <p>Role: {user.role}. Chapter: {user.chapter ||'N/A'}</p>
                                 </div>
                                 <button className="user-button">Edit</button>
                             </div>

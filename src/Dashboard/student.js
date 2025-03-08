@@ -1,22 +1,23 @@
 
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {getStudentDashboard} from '../apis/studentAPIS';
 import './student.css';
-import axios from 'axios';
+
 export default function Student() {
   const [dashboardData, setDashboardData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`${process.env.REACT_STUDENT_API_URL}/api/student/dashboard`, {
-      headers: {Authorization: 'Basic ' + btoa('student:password')},
-    })
-      .then((res) => {
-        setDashboardData(res.data);
-        })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
+    const fetchData = async () => {
+      try {
+        const data = await getStudentDashboard('priscilla', '2222');
+        setDashboardData(data);
+      } catch (error) {
+        console.error('Error fetching student dashboard:', error);
         navigate('/login');
-      });
+      }
+    };
+    fetchData();
       }, [navigate]);
       if(!dashboardData){
         return <div>Loading...</div>;
@@ -106,8 +107,8 @@ return (
                             <div className="chapter-item" key={chapter.id}>
                                <h3>{chapter.name}</h3>
                                <div className="chapter-details">
-                                 <span className="chapter-role">{chapter.role}</span>
-                                 <span className="chapter-events">{chapter.eventCount} upcoming events</span>
+                                 <span className="chapter-role">{chapter.role || 'Member'}</span>
+                                 <span className="chapter-events">{chapter.events} upcoming events</span>
                                </div>
                                <button className="chapter-view-button">View Details</button>
                              </div>

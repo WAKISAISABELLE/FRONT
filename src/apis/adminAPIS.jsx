@@ -1,11 +1,11 @@
 import apiClient from "./config";
 
 //fetch admin data
-export const getAdminDashboardData =async () => {
+export const getAdminDashboard =async (username, password) => {
     try {
         const res = await apiClient.get('/api/admin/dashboard', {
             headers:{
-                Authorization: 'Basic '  + btoa('admin:1101'),
+                Authorization: `Basic ${btoa(`${username}:${password}`)}`,
             },
         });
         return res.data;
@@ -17,11 +17,11 @@ export const getAdminDashboardData =async () => {
 };
 
 //adding a new event
-export const addEvent = async (events) => {
+export const addEvent = async (eventData, username, password) => {
     try{
-        const response = await apiClient.post('/api/admin/events', events,{
+        const response = await apiClient.post('/api/admin/events', eventData,{
             headers:{
-                Authorization:'Basic' +btoa('admin:admin'),
+                Authorization:`Basic ${btoa(`${username}:${password}`)}`,
             },
         });
         return response.data;
@@ -34,11 +34,11 @@ export const addEvent = async (events) => {
 
 //delete a user
 
-export const deleteUser = async (userId) => {
+export const deleteUser = async (userId, username, password) => {
     try {
         const response = await apiClient.delete(`/api/admin/users/${userId}`, {
             headers: {
-                Authorization: 'Basic ' + btoa('admin:admin'),
+                Authorization: `Basic ${btoa(`${username}:${password}`)}`,
             },
         });
         return response.data;
