@@ -2,6 +2,7 @@
    min-height: 100vh;
    background-color: aliceblue;
    display: flex;
+   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* sidebar */
@@ -62,6 +63,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-bottom: 40px;
+    gap:20px;
 }
 
 .dashboard-card {
@@ -78,11 +80,6 @@
     margin-bottom: 5px;
 }
 
-.dashboard-card h3 {
-    font-size: 16px;
-    color: #666;
-}
-
 .dashboord-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -91,14 +88,6 @@
 /* content */
 
 
-.content-section {
-   background-color: white;
-   border-radius: 8px;
-   padding:20px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-   margin-bottom: 30px;
-}
-
 .section-title {
     font-size: 20px;
     margin-bottom: 20px;
@@ -106,278 +95,94 @@
     padding-bottom: 10px;
 }
 
-
-/* events */
-.events-list, .users-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    
+.event-actions{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+    justify-content: center;
+}
+.edit-button{
+    background-color: #3498db;
+    color:white;
+}
+.edit-button:hover{
+    background-color: #2980b9;
+}
+.delete-button{
+    background-color: #e74c3c;
+    color:white;
+}
+.delete-button:hover{
+    background-color: #c0392b;
+}
+.user-button{
+    background-color: #2ecc71;
+    color:white;
 }
 
-.event-item, .user-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-
-.event-details, .user-details {
-    flex: 1;
-}
-
-.event-details h3, .user-details h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.event-details p, .user-details p {
-    color: #666;
-    font-size: 14px;
-}
-
-.event-button, .user-button {
-    background-color:#03A2A8;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-}
-
-.event-button:hover, .user-button:hover {
-    background-color: var(--accent-purple);
-}
-
-/* Chapter Item Styling */
-.chapter-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin-bottom: 10px;
-  }
+@media (max-width: 768px) {
+    /* Collapse sidebar on mobile */
+    .sidebar {
+      transform: translateX(-250px); /* Hidden by default */
+    }
   
-  .chapter-details h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+    .sidebar.open {
+      transform: translateX(0); /* Show when open */
+    }
   
-  .chapter-details p {
-    color: #666;
-    font-size: 14px;
-  }
+    .sidebar-checkbox:checked + .sidebar {
+      transform: translateX(0);
+    }
   
-  .chapter-button {
-    background-color: #03A2A8;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 10px;
-  }
-  
-  .chapter-button.edit-button {
-    background-color: #4CAF50; /* Green for Edit */
-  }
-  
-  .chapter-button.delete-button {
-    background-color: #f44336; /* Red for Delete */
-  }
-  
-  .chapter-button:hover {
-    background-color: var(--accent-purple);
-  }
-
-
-
-
-
-@media screen and (max-width: 1024px) {
+    /* Stack dashboard cards vertically on smaller screens */
     .dashboard-cards {
-        grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
     }
-
-    .events-list, .users-list {
-        flex-direction: column;
-    }
-
-    .event-item, .user-item {
-        flex-direction: column;
-    }
-
-    .event-details, .user-details {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 100%;
-    }
-
-    .event-item div:last-child, .user-item div:last-child {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .event-button, .user-button {
-        width: 100%;
-    }
-
+  
     .dashboard-card {
-        padding: 15px;
+      width: 100%;
     }
-
+  
+   
+    /* Add hamburger menu (you'll need to add a toggle in JSX) */
+    .hamburger {
+      display: block;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .welcome-section h1 {
+      font-size: 1.5rem;
+    }
+  
+    .welcome-section p {
+      font-size: 0.9rem;
+    }
+  
     .card-value {
-        font-size: 24px;
+      font-size: 1.5rem;
     }
-
-    .dashboard-card h3 {
-        font-size: 14px;
+  
+    .dashboard-card {
+      padding: 15px;
     }
-
-    .section-title {
-        font-size: 18px;
+  }
+  
+  /* Hide hamburger on desktop */
+  @media (min-width: 769px) {
+    .hamburger {
+      display: none;
     }
+  }
 
-    .event-details h3, .user-details h3 {
-        font-size: 14px;
-    }
-
-    .event-details p, .user-details p {
-        font-size: 12px;
-    }
-
-    .event-button, .user-button {
-        padding: 6px 12px;
-    }
-
-    .sidebar{
-        left:-250px;
-    }
-
-    .sidebar-checkbox:checked + .sidebar{
-        left:-250px;
-    }
-
-    .sidebar-toggle{
-        left:15px;
-    }
-
-    .sidebar-menu li {
-        padding: 10px 20px;
-    }
-
-    .sidebar-header {
-        padding: 10px;
-    }
-
-    .sidebar-checkbox:checked + .sidebar{
-        left:-250px;
-    }
-
-    .sidebar-toggle{
-        left:15px;
-    }
-
-    .sidebar-menu li {
-        padding: 10px 20px;
-    }
-
-
-    .sidebar-header {
-        padding: 10px;
-    }
-
-
-    .sidebar-checkbox:checked + .sidebar{
-        left:-250px;
-    }
-
-
-    .sidebar-toggle{
-        left:15px;
-    }
-
-
-
-    .sidebar-menu li {
-        padding: 10px 20px;
-    }
-
-    .sidebar-header {
-        padding: 10px;
-    }
-
-
-    .sidebar-checkbox:checked + .sidebar{
-        left:-250px;
-    }
-
-
-    .sidebar-toggle{
-        left:15px;
-    }
-
-
-    .sidebar-menu li {
-        padding: 10px 20px;
-    }
+  
+    .event-actions,
+    .edit-actions {
+      flex-direction: column;
+      gap: 8px;
 }
-
-@media screen and (max-width: 768px) {
-    .overview-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .dashboard-header .btn {
-        margin-top: 1rem;
-    }
-
-    .section-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .section-header .btn {
-        margin-top: 1rem;
-    }
-
-    .event-item, .member-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .event-item-details, .member-item-details {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 100%;
-    }
-
-    .event-item div:last-child, .member-item div:last-child {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-    }
-}
-
-
-
-
 

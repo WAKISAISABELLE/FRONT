@@ -1,5 +1,6 @@
 import apiClient from './config';
 
+
 //fetch admin data
 export const getAdminDashboard =async (username, password) => {
     try {
@@ -30,6 +31,24 @@ export const updateEvent = async (eventData, eventID) => {
         throw error;
     }
 };
+
+
+//delete an event
+
+
+export const deleteEvent = async (eventId) => {
+    try {
+      const response = await apiClient.delete(`/api/admin/events/${eventId}`, {
+        headers: {
+          Authorization: `Basic ${btoa('irene:1101')}`, // Use admin credentials
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting event:', error);
+      throw error;
+    }
+  };
 
 
 //delete a user
