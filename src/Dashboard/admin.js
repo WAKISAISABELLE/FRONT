@@ -1,31 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, Routes, Route } from "react-router-dom";
+import ManageEvents from "./manageEvents";
+import ManageUsers from "./ManageUsers";
+import ManageChapters from "./manageChapters";
 
 import './admin.css';
-import { getAdminDashboard} from '../apis/adminAPIS';
+
 
 export default function Admin() {
-    const [dashboardData, setDashboardData] = useState(null);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                console.log('fetching admin dashboard data..')
-                const data = await getAdminDashboard();
-                console.log('data:', data);
-                setDashboardData(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                navigate('/login');
-            }
-        };
-
-        fetchData();
-    }, [navigate]);
-        
-    if (!dashboardData) return <div>Loading...</div>;
-    const { stats, events, users } = dashboardData;
 
     return (
         <div className="admin-dashboard">
@@ -36,62 +18,41 @@ export default function Admin() {
                     <h2>Admin Panel</h2>
                 </div>
                 <ul className="sidebar-menu">
-                    <li>Manage Events</li>
-                    <li>Manage Users</li>
-                    <li>Manage Chapters</li>
-                    <li>Notifications</li>
+                    <li><Link to ="/admin">Dashboard</Link></li>
+                    <li><Link to="/admin/manage-events">Manage Events</Link></li>
+                    <li><Link to ="/admin/manage-users">Manage Users</Link></li>
+                    <li><Link to="/admin/manage-chapters">Manage Chapters</Link></li>
+                    <li><Link to="/admin/notifications">Notifications</Link></li>
                 </ul>
             </div>
 
             <div className="dashboard-content">
-                <div className="dashboard-cards">
-                    <div className="dashboard-card">
-                        <h3>Total members</h3>
-                        <div className="card-value">{stats.totalMembers}</div>
-                    </div>
-                    <div className="dashboard-card">
-                        <h3>Total Chapters</h3>
-                        <div className="card-value">{stats.totalChapters}</div>
-                    </div>
-                    <div className="dashboard-card">
-                        <h3>Upcoming events</h3>
-                        <div className="card-value">{stats.upcomingEvents}</div>
-                    </div>
+            <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="dashboard-cards">
+                <div className="dashboard-card">
+                  <h3>Total Members</h3>
+                  <div className="card-value">120</div>
                 </div>
-
-                <div className="content-section">
-                    <h2 className="section-title">Manage Events</h2>
-                    <div className="events-list">
-                        {events.map((event) => (
-                            <div className="event-item" key={event.id}>
-                                <div className="event-details">
-                                    <h3>{event.title}</h3>
-                                    <p>{event.date}. {event.location}</p>
-                                </div>
-                                <button className="event-button">Edit</button>
-                            </div>
-                        ))}
-                    </div>
+                <div className="dashboard-card">
+                  <h3>Total Chapters</h3>
+                  <div className="card-value">6</div>
                 </div>
-
-                <div className="content-section">
-                    <h2 className="section-title">Manage Users</h2>
-                    <div className="users-list">
-                        {users.map((user) => (
-                            <div className="user-item" key={user.id}>
-                                <div className="user-details">
-                                    <h3>{user.username}</h3>
-                                    <p>Role: {user.role}. Chapter: {user.chapter ||'N/A'}</p>
-                                </div>
-                                <button className="user-button">Edit</button>
-                            </div>
-                        ))}
-                    </div>
+                <div className="dashboard-card">
+                  <h3>Upcoming Events</h3>
+                  <div className="card-value">3</div>
                 </div>
-            </div>
-        </div>
-    );
+              </div>
+            }
+          />
+          <Route path="/manage-events" element={<ManageEvents />} />
+          <Route path="/manage-users" element={<ManageUsers />} />
+          <Route path="/manage-chapters" element={<ManageChapters />} />
+          <Route path="/notifications" element={<div>Notifications Page</div>} />
+        </Routes>
+      </div>
+    </div>
+  );
 }
-
-
-

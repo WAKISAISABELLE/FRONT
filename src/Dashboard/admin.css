@@ -155,6 +155,51 @@
     background-color: var(--accent-purple);
 }
 
+/* Chapter Item Styling */
+.chapter-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+  }
+  
+  .chapter-details h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .chapter-details p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .chapter-button {
+    background-color: #03A2A8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+  }
+  
+  .chapter-button.edit-button {
+    background-color: #4CAF50; /* Green for Edit */
+  }
+  
+  .chapter-button.delete-button {
+    background-color: #f44336; /* Red for Delete */
+  }
+  
+  .chapter-button:hover {
+    background-color: var(--accent-purple);
+  }
+
 
 
 

@@ -1,4 +1,4 @@
-import apiClient from "./config";
+import apiClient from './config';
 
 //fetch admin data
 export const getAdminDashboard =async (username, password) => {
@@ -17,11 +17,11 @@ export const getAdminDashboard =async (username, password) => {
 };
 
 //adding a new event
-export const addEvent = async (eventData, username, password) => {
+export const updateEvent = async (eventData, eventID) => {
     try{
-        const response = await apiClient.post('/api/admin/events', eventData,{
+        const response = await apiClient.post(`/api/admin/events/${eventID}`, eventData,{
             headers:{
-                Authorization:`Basic ${btoa(`${username}:${password}`)}`,
+                Authorization:`Basic ${btoa('irene:1101')}`,
             },
         });
         return response.data;
@@ -34,11 +34,11 @@ export const addEvent = async (eventData, username, password) => {
 
 //delete a user
 
-export const deleteUser = async (userId, username, password) => {
+export const deleteUser = async (userId) => {
     try {
         const response = await apiClient.delete(`/api/admin/users/${userId}`, {
             headers: {
-                Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+                Authorization: `Basic ${btoa('irene:1101')}`,
             },
         });
         return response.data;
@@ -47,3 +47,34 @@ export const deleteUser = async (userId, username, password) => {
         throw error;
     }
 };
+
+//chapter management
+
+
+export const updateChapter = async (chapterId, chapterData) => {
+    try {
+      const response = await apiClient.put(`/api/admin/chapters/${chapterId}`, chapterData, {
+        headers: {
+          Authorization: `Basic ${btoa('irene:1101')}`, // Use admin credentials
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error updating chapter:', error);
+      throw error;
+    }
+  };
+  
+  export const deleteChapter = async (chapterId) => {
+    try {
+      const response = await apiClient.delete(`/api/admin/chapters/${chapterId}`, {
+        headers: {
+          Authorization: `Basic ${btoa('irene:1101')}`, // Use admin credentials
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting chapter:', error);
+      throw error;
+    }
+  };
