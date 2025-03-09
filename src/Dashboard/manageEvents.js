@@ -10,7 +10,7 @@ export default function ManageEvents() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAdminDashboard();
+        const data = await getAdminDashboard('irene', '1101');
         setEvents(data.events);
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -24,7 +24,7 @@ export default function ManageEvents() {
   const handleEditEvent = async (eventId, updatedEvent) => {
     try {
       await updateEvent(eventId, updatedEvent);
-      const data = await getAdminDashboard();
+      const data = await getAdminDashboard('irene', '1101');
       setEvents(data.events);
     } catch (error) {
       console.error('Error editing event:', error);
@@ -34,7 +34,7 @@ export default function ManageEvents() {
   const handleDeleteEvent = async (eventId) => {
     try {
       await deleteEvent(eventId);
-      const data = await getAdminDashboard();
+      const data = await getAdminDashboard('irene', '1101');
       setEvents(data.events);
     } catch (error) {
       console.error('Error deleting event:', error);

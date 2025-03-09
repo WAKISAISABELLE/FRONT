@@ -10,7 +10,7 @@ export default function ManageChapters() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAdminDashboard();
+        const data = await getAdminDashboard('irene','1101');
         setChapters(data.chapters);
       } catch (error) {
         console.error('Error fetching chapters:', error);
@@ -24,7 +24,7 @@ export default function ManageChapters() {
   const handleEditChapter = async (chapterId, updatedChapter) => {
     try {
       await updateChapter(chapterId, updatedChapter);
-      const data = await getAdminDashboard();
+      const data = await getAdminDashboard('irene','1101');
       setChapters(data.chapters);
     } catch (error) {
       console.error('Error editing chapter:', error);
@@ -34,7 +34,7 @@ export default function ManageChapters() {
   const handleDeleteChapter = async (chapterId) => {
     try {
       await deleteChapter(chapterId);
-      const data = await getAdminDashboard();
+      const data = await getAdminDashboard('irene', '1101');
       setChapters(data.chapters);
     } catch (error) {
       console.error('Error deleting chapter:', error);

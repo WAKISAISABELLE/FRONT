@@ -20,7 +20,7 @@ export const getAdminDashboard =async (username, password) => {
 //adding a new event
 export const updateEvent = async (eventData, eventID) => {
     try{
-        const response = await apiClient.post(`/api/admin/events/${eventID}`, eventData,{
+        const response = await apiClient.put(`/api/admin/events/${eventID}`, eventData,{
             headers:{
                 Authorization:`Basic ${btoa('irene:1101')}`,
             },

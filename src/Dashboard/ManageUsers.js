@@ -10,7 +10,7 @@ export default function ManageUsers() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAdminDashboard();
+        const data = await getAdminDashboard('irene', '1101')
         setUsers(data.users);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -24,7 +24,7 @@ export default function ManageUsers() {
   const handleDeleteUser = async (userId) => {
     try {
       await deleteUser(userId);
-      const data = await getAdminDashboard();
+      const data = await getAdminDashboard('irene','1101');
       setUsers(data.users);
     } catch (error) {
       console.error('Error deleting user:', error);
