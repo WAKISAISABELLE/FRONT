@@ -1,8 +1,9 @@
 .admin-dashboard {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #7A288A, #3498BB);
+  background: white;
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
+  width:100%;
 }
 
 /* sidebar */
@@ -70,6 +71,7 @@
   padding: 20px;
   width: calc(100% - 250px);
   text-align: center;
+
 }
 
 .dashboard-cards {
@@ -137,24 +139,6 @@
   color: white;
 }
 
-@media (max-width: 768px) {
-  /* Collapse sidebar on mobile */
-  .sidebar {
-    transform: translateX(-250px); /* Hidden by default */
-  }
-
-  .sidebar.open {
-    transform: translateX(0); /* Show when open */
-  }
-
-  .sidebar-checkbox:checked + .sidebar {
-    transform: translateX(0);
-  }
-
-  /* Stack dashboard cards vertically on smaller screens */
-  .dashboard-cards {
-    flex-direction: column;
-  }
 
   .dashboard-card {
     width: 100%;
@@ -168,36 +152,46 @@
     color: white;
     padding: 10px;
   }
-}
 
-@media (max-width: 480px) {
-  .welcome-section h1 {
-    font-size: 1.5rem;
+  @media (max-width: 768px) {
+    /* Sidebar becomes collapsible */
+    .sidebar {
+      transform: translateX(-250px); /* Hidden by default on mobile */
+    }
+  
+    .sidebar-checkbox:checked + .sidebar {
+      transform: translateX(0); /* Show when checkbox is checked */
+    }
+  
+    .sidebar-toggle {
+      display: block; /* Show toggle button on mobile */
+    }
+  
+    .dashboard-content {
+      margin-left: 0; /* No sidebar offset */
+      padding: 15px;
+    }
+  
+    .dashboard-content h1 {
+      font-size: 1.5rem;
+    }
+  
+    .dashboard-cards {
+      grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
   }
-
-  .welcome-section p {
-    font-size: 0.9rem;
-  }
-
-  .card-value {
-    font-size: 1.5rem;
-  }
-
-  .dashboard-card {
-    padding: 15px;
-  }
-}
-
-/* Hide hamburger on desktop */
-@media (min-width: 769px) {
-  .hamburger {
-    display: none;
-  }
-}
-
-.event-actions,
-.edit-actions {
-  flex-direction: column;
-  gap: 8px;
+  
+  @media (max-width: 480px) {
+    .dashboard-content h1 {
+      font-size: 1.25rem;
+    }
+  
+    .dashboard-card {
+      padding: 15px;
+    }
+  
+    .card-value {
+      font-size: 1.5rem;
+    }
 }
 

@@ -35,7 +35,7 @@ export default function Welcome(){
       description: "Focused on artificial intelligence research and applications.",
       members: 60,
       events: 10,
-      learnMoreUrl:'https://www.augmentedreality.com'
+      learnMoreUrl:'https://https://www.ibm.com/think/topics/augmented-reality'
     },
     {
       id: 5,
@@ -66,7 +66,7 @@ export default function Welcome(){
           </ul>
         </nav>
         <div className='auth-buttons'>
-           <link to='/Login' className='button button-login'>Log in</link> 
+           <Link to='/Login' className='button button-login'>Log in</Link> 
            <Link to='/signup' className='button button-signup'>Sign up</Link> 
         {/* used link instead of static */}
         </div>
@@ -116,7 +116,11 @@ export default function Welcome(){
                 <span>{chapter.members} Members</span>
                 <span>{chapter.events} Events</span>
               </div>
-              <a href={chapter.url} className="chapter-button" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <a href={chapter.learnMoreurl} className="chapter-button" target="_blank" rel="noopener noreferrer"onClick={(e) => {
+                    console.log('Clicked URL:', chapter.learnMoreUrl);
+                    if (!chapter.learnMoreUrl) e.preventDefault(); // Prevent navigation if undefined
+                  }}
+              >Learn More</a>
             </div>
           ))}
         </div>

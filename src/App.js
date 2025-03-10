@@ -1,20 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
-// import Admin from './Dashboard/Admin.js';
-import Student from './Dashboard/Student.js';
-// import Welcome from './components/#';
+//  import Admin from './Dashboard/Admin.js';
+// import Student from './Dashboard/student.js';
+import Welcome from './components/welcome.js'; // Ensure this matches the actual file name
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        {/* <Route path="/admin" element={<Admin />} /> */}
-         <Route path="/student" element={<Student />} />
-         {/* <Route path="/" element={<Welcome />} /> */}
+          {/* <Route path="/admin" element={<Admin />} />   */}
+          {/* <Route path="/student" element={<Student />}  */}
+         <Route path="/welcome" element={<Welcome />} /> 
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

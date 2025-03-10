@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
 import ManageEvents from "./manageEvents";
 import ManageUsers from "./ManageUsers";
 import ManageChapters from "./manageChapters";
@@ -10,7 +10,8 @@ import './admin.css';
 export default function Admin() {
     const [dashboardData, setDashboardData] = useState({});
     // const [errorMessage, setErrorMessage] = useState(null);
-    // const navigate = useNavigate();
+    //  const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +28,7 @@ export default function Admin() {
         };
         fetchData();
     }, []);
+    console.log('Current path:', location.pathname); // Debug: Check the current URL
 
     // if (errorMessage) return <div style={{ color: 'red' }}>{errorMessage}</div>;
     // if (!dashboardData) return <div>Loading...</div>;
