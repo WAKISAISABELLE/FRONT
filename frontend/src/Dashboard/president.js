@@ -300,13 +300,13 @@ export default function President() {
         {selectedContent === 'chapter3' && (
           <section id="chapter3">
             <div className='sem-card'>
-            <div className="calendar-container">
-              <FullCalendar
-                plugins={[dayGridPlugin, interactionPlugin]}
-                initialView="dayGridMonth"
-                events={events}
-                dateClick={handleDateClick}
-              />
+              <div className="calendar-container">
+                <FullCalendar
+                  plugins={[dayGridPlugin, interactionPlugin]}
+                  initialView="dayGridMonth"
+                  events={events}
+                  dateClick={handleDateClick}
+                />
               </div>
             </div>
             <div className="events-container">
@@ -331,9 +331,8 @@ export default function President() {
         )}
         {selectedContent === 'chapter4' && (
           <section id="chapter4">
-           
             <div className="sem-card">
-              <h2><i className="fas fa-file-alt"></i>Participates</h2>
+              <h2><i className="fas fa-file-alt"></i>Participants</h2>
               <button onClick={handleAddParticipant}>Add Participant</button>
               <table className="participants-table">
                 <thead>
