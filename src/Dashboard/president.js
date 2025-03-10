@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './president.css';
@@ -18,11 +19,19 @@ export default function President() {
     { name: 'Bob Brown', status: 'Non-Active' }
   ]);
   const navigate = useNavigate();
+=======
+import React, { useState } from 'react';
+import './president.css';
+
+export default function President() {
+  const [selectedContent, setSelectedContent] = useState('dashboard');
+>>>>>>> f1508e4 (small changes)
 
   const handleContentChange = (content) => {
     setSelectedContent(content);
   };
 
+<<<<<<< HEAD
   const handleLogout = () => {
     // Perform any necessary logout operations here
     navigate('/welcome');
@@ -151,21 +160,35 @@ export default function President() {
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
+=======
+  return (
+    <div className="dashboard-container">
+      <aside className="sidebar">
+        
+>>>>>>> f1508e4 (small changes)
         <div className="profile">
           <img src="/img/prof.png" alt="Profile" className="profile-pic" />
           <p>President</p>
         </div>
         <ul>
           <li><a href="#dashboard" onClick={() => handleContentChange('dashboard')}>Dashboard</a></li>
+<<<<<<< HEAD
           <li><a href="#chapter1" onClick={() => handleContentChange('chapter1')}>Progress</a></li>
           <li><a href="#chapter3" onClick={() => handleContentChange('chapter3')}>Events</a></li>
           <li><a href="#chapter4" onClick={() => handleContentChange('chapter4')}>Participants</a></li>
           <li><a href="#logout" onClick={handleLogout}>Logout</a></li>
+=======
+          <li><a href="#chapter1" onClick={() => handleContentChange('chapter1')}>Chapter 1</a></li>
+          <li><a href="#chapter2" onClick={() => handleContentChange('chapter2')}>Chapter 2</a></li>
+          <li><a href="#chapter3" onClick={() => handleContentChange('chapter3')}>Chapter 3</a></li>
+          <li><a href="#chapter4" onClick={() => handleContentChange('chapter4')}>Chapter 4</a></li>
+>>>>>>> f1508e4 (small changes)
         </ul>
       </aside>
       <div className="content">
         {selectedContent === 'dashboard' && (
           <div className="dashboard">
+<<<<<<< HEAD
             <div className="card small-card">
               <h2><i className="fas fa-chart-line"></i> Jan-Feb pie chart stats 2025</h2>
               <div id="myChart" className="chart-container"></div>
@@ -207,11 +230,21 @@ export default function President() {
                   <p>3 students</p>
                 </div>
               </div>
+=======
+            <div className="card">
+              <h2>Pie Chart</h2>
+              {/* <Pie data={pieData} /> */}
+            </div>
+            <div className="card">
+              <h2>Bar Chart</h2>
+              {/* <Bar data={barData} /> */}
+>>>>>>> f1508e4 (small changes)
             </div>
           </div>
         )}
         {selectedContent === 'chapter1' && (
           <section id="chapter1">
+<<<<<<< HEAD
             <div className='card-content'>
               <div className='sem-card-container'>
                 <div className="box">
@@ -294,11 +327,45 @@ export default function President() {
                   <canvas id="lineChart" style={{ width: '100%', maxWidth: '900px' }}></canvas>
                 </div>
               </div>
+=======
+            <h2>Chapter 1</h2>
+            <section className="card">
+              <h2>Activities in the Chapter</h2>
+              <ul>
+                <li>Chapter meeting</li>
+                <li>Chapter meeting</li>
+                <li>Chapter meeting</li>
+              </ul>
+            </section>
+            <section className="card">
+              <h2>we are done</h2>
+              <div className="semi-card">
+                <h3>run for yr life</h3>
+                <p>run</p>
+              </div>
+              <div className="semi-card">
+                <h3>run</h3>
+                <p></p>
+              </div>
+            </section>
+          </section>
+        )}
+        {selectedContent === 'chapter2' && (
+          <section id="chapter2">
+            <div className="box">
+              <div>One</div>
+              <div>Two</div>
+              <div>Three</div>
+              <div>Four</div>
+              <div>Five</div>
+
+>>>>>>> f1508e4 (small changes)
             </div>
           </section>
         )}
         {selectedContent === 'chapter3' && (
           <section id="chapter3">
+<<<<<<< HEAD
             <div className='sem-card'>
             <div className="calendar-container">
               <FullCalendar
@@ -327,10 +394,15 @@ export default function President() {
                 </ul>
               </div>
             </div>
+=======
+            <h2>Chapter 3</h2>
+            <p>Content for Chapter 3...</p>
+>>>>>>> f1508e4 (small changes)
           </section>
         )}
         {selectedContent === 'chapter4' && (
           <section id="chapter4">
+<<<<<<< HEAD
            
             <div className="sem-card">
               <h2><i className="fas fa-file-alt"></i>Participates</h2>
@@ -388,6 +460,10 @@ export default function President() {
                 </div>
               </div>
             </div>
+=======
+            <h2>Chapter 4</h2>
+            <p>Content for Chapter 4...</p>
+>>>>>>> f1508e4 (small changes)
           </section>
         )}
       </div>
