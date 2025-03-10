@@ -125,7 +125,7 @@ h2{
 }
 .sem-card {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 1px solid #131212;
   transition: .2s;
   flex: 1 1 calc(33.333% - 20px); /* 3 columns with gap */
