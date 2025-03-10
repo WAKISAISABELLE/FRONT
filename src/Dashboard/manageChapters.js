@@ -14,7 +14,7 @@ export default function ManageChapters() {
         setChapters(data.chapters);
       } catch (error) {
         console.error('Error fetching chapters:', error);
-        navigate('/login');
+        // navigate('/login');
       }
     };
 

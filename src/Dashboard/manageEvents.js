@@ -14,7 +14,7 @@ export default function ManageEvents() {
         setEvents(data.events);
       } catch (error) {
         console.error('Error fetching events:', error);
-        navigate('/login');
+        // navigate('/login');
       }
     };
 

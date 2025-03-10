@@ -14,7 +14,7 @@ export default function ManageUsers() {
         setUsers(data.users);
       } catch (error) {
         console.error('Error fetching users:', error);
-        navigate('/login');
+        // navigate('/login');
       }
     };
 

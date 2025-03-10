@@ -14,7 +14,7 @@ export default function Student() {
         setDashboardData(data);
       } catch (error) {
         console.error('Error fetching student dashboard:', error);
-        navigate('/login');
+        // navigate('/login');
       }
     };
     fetchData();
