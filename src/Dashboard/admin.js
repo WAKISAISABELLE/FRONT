@@ -1,97 +1,86 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
+import ManageEvents from "./manageEvents";
+import ManageUsers from "./ManageUsers";
+import ManageChapters from "./manageChapters";
+import { getAdminDashboard } from '../apis/adminAPIS';
+
 import './admin.css';
 
-export default function admin(){
-    return(
-        <div class ='dashboard'>
-            <div class ="dahsboard-header">
-                <div>
-                   <h1> Admin Dashboard</h1>
-                   <p> Manage your chapter activities</p>
-                </div>
-                <button class = 'button'> +Add new</button>
-            </div>
-            <div class="overview-cards">
-                <div class="card">
-                    <div class ="card-header">
-                        <span class ="card-icon">🧚‍♀️</span>
-                        <span class="card-count">32</span>
-                    </div>
-                   <h3> Total members</h3>
-                   <p>Active chapter participants:150</p>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-icon">🗓️</span>
-                        <span class="card-count">7</span>
-                    </div>
-                    <h3>Upcoming Events</h3>
-                    <p>Planned Chapter activities</p>
-                </div>
+export default function Admin() {
+    const [dashboardData, setDashboardData] = useState({});
+    // const [errorMessage, setErrorMessage] = useState(null);
+    //  const navigate = useNavigate();
+    const location = useLocation();
 
-                <div class="card">
-                    <div class ="card-header">
-                        <span class="card-icon">🔔</span>
-                        <span class="card-count">1</span>
-                    </div>
-                    <h3>Notifications</h3>
-                    <p>Recent updates</p>
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                console.log('Fetching admin dashboard...');
+                const data = await getAdminDashboard('irene', '1101'); // Hardcoded credentials
+                console.log('Data:', data);
+                setDashboardData(data);
+            } catch (error) {
+                console.error('Error fetching admin dashboard:', error);
+                // setErrorMessage('Failed to load admin dashboard. Redirecting to login...');
+                // setTimeout(() => navigate('/login'), 2000);
+            }
+        };
+        fetchData();
+    }, []);
+    console.log('Current path:', location.pathname); // Debug: Check the current URL
+
+    // if (errorMessage) return <div style={{ color: 'red' }}>{errorMessage}</div>;
+    // if (!dashboardData) return <div>Loading...</div>;
+    // const { chapters, events, users } = dashboardData;
+
+    return (
+        <div className="admin-dashboard">
+            <input type="checkbox" id="sidebar-toggle" className="sidebar-checkbox" />
+            <div className="sidebar">
+                <label htmlFor="sidebar-toggle" className="sidebar-toggle">Ξ</label>
+                <div className="sidebar-header">
+                    <h2>Admin Panel</h2>
                 </div>
+                <ul className="sidebar-menu">
+                    <li><Link to="/admin">Dashboard</Link></li>
+                    <li><Link to="/admin/manage-events">Manage Events</Link></li>
+                    <li><Link to="/admin/manage-users">Manage Users</Link></li>
+                    <li><Link to="/admin/manage-chapters">Manage Chapters</Link></li>
+                    <li><Link to="/admin/notifications">Notifications</Link></li>
+                </ul>
             </div>
 
-            <div class="dashboard-content">
-                <div class="section">
-                    <div class ="section-header">
-                         <h2> Manage Events</h2>
-                         <button class="button">+Add event</button>
-                    </div>
-                    <div class ="events-list">
-                        <div class ="event-item">
-                            <div>
-                                <h3>Guest Lecture</h3>
-                                <p>Date: 2025-03-01/Location: Nkoyoyo Hall</p>
-                            </div>
-                        </div>
-                        <div class ="event-item">
-                            <div>
-                                <h3>Worksops</h3>
-                                <p>Date: 2025-04-15/Location: Motiv, Bugolobi</p>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="button">Edit</button>
-                            <button class=" button button-delete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class ="section">
-                <div class ="section-header">
-                    <h2>Member management</h2>
-                    <button class ="button">+Add new</button>
-                </div>
-                <div class ="members-list">
-                    <div class ="member-item">
-                        <div>
-                            <h3>Isabelle</h3>
-                            <p>isabellewakisa992@gmail.com</p>
-                            <span class="member-role">Member</span>
-                        </div>
-                        <button class ="button button-delete">Remove</button>
-                        <div>
-                            <div class ="member-item">
-                                <div>
-                                    <h3>Henry</h3>
-                                    <p>henry@gmsil.com</p>
-                                    <span class="member-role">Leader</span>
+            <div className="dashboard-content">
+                <h1>Welcome, Admin!</h1>
+                <p>Manage your chapters, events, and users</p>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <div className="dashboard-cards">
+                                <div className="dashboard-card">
+                                    <h3>Total Members</h3>
+                                    <div className="card-value">{dashboardData?.users?.length}</div>
                                 </div>
-                                <button class ="button button-delete">Remove</button>
+                                <div className="dashboard-card">
+                                    <h3>Total Chapters</h3>
+                                    <div className="card-value">{dashboardData?.chapters?.length}</div>
+                                    <p>Active chapters</p>
+                                </div>
+                                <div className="dashboard-card">
+                                    <h3>Upcoming Events</h3>
+                                    <div className="card-value">{dashboardData?.events?.length}</div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        }
+                    />
+                    <Route path="/manage-events" element={<ManageEvents />} />
+                    <Route path="/manage-users" element={<ManageUsers />} />
+                    <Route path="/manage-chapters" element={<ManageChapters />} />
+                    <Route path="/notifications" element={<div>Notifications Page</div>} />
+                </Routes>
             </div>
         </div>
-
     );
-};
+}
